@@ -1,5 +1,7 @@
 const monthsArr = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
 const daysArr = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота']
+const msInHour = 3600000;
+const hoursInDay = 24;
 
 //----------Display the current month--------
 function showMonth() {
@@ -42,9 +44,9 @@ function getDaysToBirthday(date) {
   
   const daysLeft = 
     ((thisYearBirthday - currentDate) > 0) ?
-    Math.trunc((thisYearBirthday - currentDate) / 3600000 / 24):
-    Math.trunc(((new Date(new Date().getFullYear()+1, new Date(date).getMonth(),
-    new Date(date).getDate())) - currentDate) / 3600000 / 24);
+    Math.trunc((thisYearBirthday - currentDate) / msInHour / hoursInDay):
+    Math.trunc(((new Date(new Date().getFullYear() + 1, new Date(date).getMonth(),
+      new Date(date).getDate())) - currentDate) / msInHour / hoursInDay);
   
   return output.textContent = 'Days till birthday: ' + daysLeft;
 }
